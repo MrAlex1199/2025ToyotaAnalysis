@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>วิเคราะห์ธุรกิจ TOYOTA</title>
+    <link rel="icon" type="image/png" href="https://placehold.co/64x64/EB0A1E/ffffff?text=T" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Kanit", sans-serif;
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+      }
+      .scroll-container {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      .scroll-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+      .scroll-section {
+        scroll-snap-align: start;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem;
+        position: relative;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .scroll-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .card {
+        background-color: rgba(41, 41, 41, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+      .icon-bg {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        padding: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      .scroll-down-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-20px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+      }
+      .nav-dots {
+        position: fixed;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        z-index: 50;
+      }
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .nav-dot.active {
+        background-color: #eb0a1e; /* Toyota Red */
+        transform: scale(1.5);
+      }
+      .timeline-step {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 10;
+        width: 150px; /* Fixed width for alignment */
+        text-align: center;
+      }
+      /* Increased font sizes */
+      p,
+      li {
+        font-size: 1.1rem; /* Increased base font size */
+      }
+      h4 {
+        font-size: 1.25rem; /* Increased subheading font size */
+      }
+      .timeline-step p {
+        font-size: 0.9rem; /* Slightly smaller for timeline description */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav-container" class="nav-dots"></div>
+
+    <div class="scroll-container">
+      <!-- Section 1: Title -->
+      <section
+        id="section-1"
+        class="scroll-section"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1617531322474-32f2b766316a?q=80&w=2070&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative text-center z-10">
+          <img
+            src="https://placehold.co/150x40/ffffff/EB0A1E?text=TOYOTA&font=kanit"
+            alt="Toyota Logo"
+            class="mx-auto mb-8 h-12"
+            onerror="this.onerror=null;this.src='https://placehold.co/150x40/ffffff/EB0A1E?text=TOYOTA&font=kanit';"
+          />
+          <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">
+            วิเคราะห์กลยุทธ์และระบบการผลิต TOYOTA
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-300">
+            นำเสนอการวิเคราะห์ธุรกิจในมิติต่างๆ
+          </p>
+        </div>
+        <div class="scroll-down-indicator text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <!-- Section 2: Input-Process-Output -->
+      <section id="section-2" class="scroll-section bg-gray-900">
+        <div class="text-center mb-12 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl font-bold mb-2 text-red-500">
+            ระบบการผลิตแบบโตโยต้า (TPS)
+          </h2>
+          <p class="text-xl text-gray-400">
+            จากปัจจัยนำเข้าสู่ผลผลิตที่มีคุณภาพ
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl w-full">
+          <!-- INPUT -->
+          <div class="card text-center">
+            <div class="mb-4">
+              <img
+                src="/photo/IPOPhoto/RawM.jpg"
+                alt="Raw materials and steel"
+                class="w-full h-48 object-cover rounded-lg mb-4"
+              />
+            </div>
+            <div class="icon-bg mx-auto">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-red-400"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <h3 class="text-3xl font-semibold mb-4">INPUT</h3>
+            <ul class="text-left list-disc list-inside text-gray-300 space-y-2">
+              <li><b>วัตถุดิบ:</b> เหล็ก, พลาสติก, ชิ้นส่วน</li>
+              <li><b>แรงงาน:</b> พนักงาน, วิศวกร, ฝ่ายคุณภาพ</li>
+              <li><b>เครื่องจักร:</b> หุ่นยนต์, ระบบอัตโนมัติ</li>
+              <li><b>ข้อมูล:</b> คำสั่งซื้อ, แผนการผลิต, R&D</li>
+              <li><b>เงินทุน:</b> งบประมาณการผลิตและพัฒนา</li>
+            </ul>
+          </div>
+          <!-- PROCESS -->
+          <div class="card text-center">
+            <div class="mb-4">
+              <img
+                src="/photo/IPOPhoto/ProL.jpg"
+                alt="Manufacturing process and robots"
+                class="w-full h-48 object-cover rounded-lg mb-4"
+              />
+            </div>
+            <div class="icon-bg mx-auto">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-red-400"
+              >
+                <path
+                  d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.5A4.5 4.5 0 0 0 18 5c-2.22 0-4 1.44-4 4 0 3.5-2.5 8.5-4 8.5z"
+                />
+                <path
+                  d="M6.32 12.68A4.5 4.5 0 0 0 2 9.5C2 5 5 2 8 2c2.22 0 4 1.44 4 4 0 3.5-2.5 8.5-4 8.5z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-3xl font-semibold mb-4">PROCESS</h3>
+            <ul class="text-left list-disc list-inside text-gray-300 space-y-2">
+              <li><b>Just-in-Time (JIT):</b> ผลิตเมื่อต้องการ</li>
+              <li><b>Jidoka:</b> หยุดเมื่อพบปัญหา</li>
+              <li><b>Kaizen:</b> ปรับปรุงอย่างต่อเนื่อง</li>
+              <li><b>Kanban:</b> ระบบบัตรหมุนเวียน</li>
+              <li><b>Supplier Management:</b> บริหารซัพพลายเออร์</li>
+            </ul>
+          </div>
+          <!-- OUTPUT -->
+          <div class="card text-center">
+            <div class="mb-4">
+              <img
+                src="/photo/IPOPhoto/OutP.jpg"
+                alt="Toyota cars output"
+                class="w-full h-48 object-cover rounded-lg mb-4"
+              />
+            </div>
+            <div class="icon-bg mx-auto">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-red-400"
+              >
+                <path d="M14 16.5 17.5 13 21 16.5" />
+                <path d="M17.5 13v9" />
+                <path d="m3 16.5 3.5-3.5 3.5 3.5" />
+                <path d="M7 13V4" />
+                <path d="M14 4h3v2h-3z" />
+                <path d="M3 6h3v2H3z" />
+                <path d="M11 4h10" />
+                <path d="M3 8h2" />
+                <path d="M3 12h2" />
+              </svg>
+            </div>
+            <h3 class="text-3xl font-semibold mb-4">OUTPUT</h3>
+            <ul class="text-left list-disc list-inside text-gray-300 space-y-2">
+              <li><b>รถยนต์คุณภาพสูง:</b> Camry, Hilux</li>
+              <li><b>ชิ้นส่วนรถยนต์:</b> เครื่องยนต์, ระบบเบรก</li>
+              <li><b>ความพึงพอใจลูกค้า:</b> ส่งมอบตรงเวลา</li>
+              <li><b>กำไรและผลประกอบการ:</b> จากการคุมต้นทุน</li>
+              <li><b>ความยั่งยืน:</b> ลดของเสียและพลังงาน</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Production Steps -->
+      <section id="section-3" class="scroll-section bg-gray-800">
+        <div class="text-center mb-12 max-w-6xl">
+          <h2 class="text-4xl md:text-5xl font-bold mb-2 text-red-500">
+            ขั้นตอนการผลิต
+          </h2>
+          <p class="text-xl text-gray-400">
+            จากแผ่นเหล็กสู่รถยนต์ที่สมบูรณ์แบบ
+          </p>
+        </div>
+        <div class="relative w-full max-w-7xl">
+          <div
+            class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-600 -translate-y-1/2 mt-[-2.5rem]"
+          ></div>
+          <div
+            class="flex flex-col md:flex-row justify-between items-start w-full gap-8 md:gap-4"
+          >
+            <div class="timeline-step">
+              <img
+                src="/photo/ProductionProcess/stamping001.jpg"
+                alt="ขึ้นรูป (Stamping)"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <div
+                class="w-24 h-24 rounded-full bg-red-500 flex items-center justify-center text-white text-4xl font-bold border-4 border-gray-800 mb-3"
+              >
+                1
+              </div>
+              <h4 class="font-semibold text-lg">ขึ้นรูป (Stamping)</h4>
+              <p class="text-gray-400 mt-1 text-base">
+                ใช้เครื่องกดไฮดรอลิกขนาดใหญ่ปั๊มแผ่นเหล็กเป็นชิ้นส่วนตัวถัง
+              </p>
+            </div>
+            <div class="timeline-step">
+              <img
+                src="/photo/ProductionProcess/welding002.jpg"
+                alt="เชื่อมประกอบ (Welding)"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <div
+                class="w-24 h-24 rounded-full bg-red-500 flex items-center justify-center text-white text-4xl font-bold border-4 border-gray-800 mb-3"
+              >
+                2
+              </div>
+              <h4 class="font-semibold text-lg">เชื่อมประกอบ (Welding)</h4>
+              <p class="text-gray-400 mt-1 text-base">
+                ใช้หุ่นยนต์เชื่อมโครงสร้างตัวถังเข้าด้วยกันอย่างแม่นยำ
+              </p>
+            </div>
+            <div class="timeline-step">
+              <img
+                src="/photo/ProductionProcess/painting003.jpg"
+                alt="พ่นสี (Painting)"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <div
+                class="w-24 h-24 rounded-full bg-red-500 flex items-center justify-center text-white text-4xl font-bold border-4 border-gray-800 mb-3"
+              >
+                3
+              </div>
+              <h4 class="font-semibold text-lg">พ่นสี (Painting)</h4>
+              <p class="text-gray-400 mt-1 text-base">
+                เคลือบกันสนิมและพ่นสีในห้องปลอดฝุ่นด้วยแขนกลอัตโนมัติ
+              </p>
+            </div>
+            <div class="timeline-step">
+              <img
+                src="/photo/ProductionProcess/assembly004.jpg"
+                alt="ประกอบ (Assembly)"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <div
+                class="w-24 h-24 rounded-full bg-red-500 flex items-center justify-center text-white text-4xl font-bold border-4 border-gray-800 mb-3"
+              >
+                4
+              </div>
+              <h4 class="font-semibold text-lg">ประกอบ (Assembly)</h4>
+              <p class="text-gray-400 mt-1 text-base">
+                ติดตั้งเครื่องยนต์, ช่วงล่าง, อุปกรณ์ภายในบนสายการผลิต
+              </p>
+            </div>
+            <div class="timeline-step">
+              <img
+                src="/photo/ProductionProcess/inspection005.jpg"
+                alt="ตรวจสอบ (Inspection)"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <div
+                class="w-24 h-24 rounded-full bg-red-500 flex items-center justify-center text-white text-4xl font-bold border-4 border-gray-800 mb-3"
+              >
+                5
+              </div>
+              <h4 class="font-semibold text-lg">ตรวจสอบ (Inspection)</h4>
+              <p class="text-gray-400 mt-1 text-base">
+                ทดสอบระบบเบรก, แสงไฟ, การควบคุม และทดลองขับจริง
+              </p>
+            </div>
+            <div class="timeline-step">
+              <img
+                src="/photo/ProductionProcess/Logistic006.jpeg"
+                alt="ขนส่ง (Logistics)"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <div
+                class="w-24 h-24 rounded-full bg-red-500 flex items-center justify-center text-white text-4xl font-bold border-4 border-gray-800 mb-3"
+              >
+                6
+              </div>
+              <h4 class="font-semibold text-lg">ขนส่ง (Logistics)</h4>
+              <p class="text-gray-400 mt-1 text-base">
+                รถที่ผ่าน QC จะถูกส่งไปจัดเก็บในคลังและกระจายสู่ดีลเลอร์
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Forecasting (Infographic) -->
+      <section id="section-4" class="scroll-section bg-gray-900">
+        <div class="text-center mb-12 max-w-5xl">
+          <h2 class="text-4xl md:text-5xl font-bold mb-2 text-red-500">
+            การพยากรณ์การขายและการผลิต
+          </h2>
+          <p class="text-xl text-gray-400">
+            วางแผนการผลิตอย่างแม่นยำเพื่อตอบสนองตลาด
+          </p>
+        </div>
+        <div class="card max-w-6xl w-full p-8">
+          <h3 class="text-3xl font-semibold mb-8 text-center">
+            กลยุทธ์การพยากรณ์และเป้าหมายปี 2568
+          </h3>
+
+          <!-- Market Overview -->
+          <div class="text-center mb-8">
+            <div
+              class="inline-block bg-red-500 bg-opacity-20 border border-red-500 rounded-lg p-4 mb-4"
+            >
+              <p class="text-lg text-gray-300">ตลาดรถยนต์โดยรวมปี 2568</p>
+              <p class="text-4xl font-bold text-red-400">600,000 คัน</p>
+            </div>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          >
+            <div class="text-center bg-gray-800 rounded-lg p-6">
+              <div class="text-5xl font-bold text-red-400 mb-2">231,000</div>
+              <p class="text-gray-300">เป้ายอดขายโตโยต้า</p>
+              <p class="text-sm text-gray-500">(คัน)</p>
+            </div>
+            <div class="text-center bg-gray-800 rounded-lg p-6">
+              <div class="text-5xl font-bold text-green-400 mb-2">+5%</div>
+              <p class="text-gray-300">อัตราการเติบโต</p>
+              <p class="text-sm text-gray-500">จากปีที่แล้ว</p>
+            </div>
+            <div class="text-center bg-gray-800 rounded-lg p-6">
+              <div class="text-5xl font-bold text-blue-400 mb-2">38.5%</div>
+              <p class="text-gray-300">ส่วนแบ่งตลาด</p>
+              <p class="text-sm text-gray-500">คาดการณ์</p>
+            </div>
+            <div class="text-center bg-gray-800 rounded-lg p-6">
+              <div class="text-5xl font-bold text-yellow-400 mb-2">537,860</div>
+              <p class="text-gray-300">เป้าการผลิต</p>
+              <p class="text-sm text-gray-500">(คัน)</p>
+            </div>
+          </div>
+
+          <!-- Strategy Description -->
+          <div class="bg-gray-800 rounded-lg p-6">
+            <h4 class="text-xl font-semibold mb-4 text-center">
+              กลยุทธ์การพยากรณ์
+            </h4>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold mb-2 text-red-400">วิธีการพยากรณ์</h5>
+                <ul
+                  class="text-left list-disc list-inside text-gray-300 space-y-2"
+                >
+                  <li>
+                    วิเคราะห์ข้อมูลจากหลายแหล่ง เช่น ยอดขายในอดีต, สภาพเศรษฐกิจ,
+                    และข้อมูลจากดีลเลอร์
+                  </li>
+                  <li>
+                    ใช้ระบบดึง (Pull System) ที่ผลิตตามคำสั่งซื้อจริงเป็นหลัก
+                  </li>
+                  <li>
+                    เป้าหมายคือผลิตให้ "พอดี" กับความต้องการ เพื่อลดสินค้าคงคลัง
+                    (Waste)
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-semibold mb-2 text-red-400">
+                  ความสำคัญของการพยากรณ์
+                </h5>
+                <p class="text-gray-300">
+                  โตโยต้าไม่ได้ผลิตรถยนต์รอไว้มากๆ
+                  แต่จะพยากรณ์ความต้องการของตลาดอย่างใกล้ชิด
+                  เพื่อวางแผนการผลิตให้สอดคล้องและสนับสนุนระบบ Just-in-Time
+                  อย่างมีประสิทธิภาพ
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Quality Control -->
+      <section id="section-5" class="scroll-section bg-gray-800">
+        <div class="text-center mb-12 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl font-bold mb-2 text-red-500">
+            การควบคุมคุณภาพ
+          </h2>
+          <p class="text-xl text-gray-400">คุณภาพที่สร้างขึ้นในทุกกระบวนการ</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl w-full">
+          <div class="card text-center">
+            <img
+              src="/photo/QualityControl/jidoka001.webp"
+              alt="Jidoka"
+              class="w-full h-64 object-cover mb-4 rounded-lg"
+            />
+            <h3 class="text-3xl font-semibold mb-4">Jidoka (จิโดกะ)</h3>
+            <p class="text-gray-300">
+              "ระบบอัตโนมัติที่มาพร้อมสัมผัสของมนุษย์"
+              ให้อำนาจพนักงานหรือเครื่องจักรหยุดสายการผลิตทันทีเมื่อพบข้อบกพร่อง
+              เพื่อแก้ไขปัญหาที่ต้นเหตุและป้องกันไม่ให้ข้อผิดพลาดแพร่กระจาย
+            </p>
+          </div>
+          <div class="card text-center">
+            <img
+              src="/photo/QualityControl/Poka-yoke002.png"
+              alt="Poka-Yoke"
+              class="w-full h-64 object-cover mb-4 rounded-lg"
+            />
+            <h3 class="text-3xl font-semibold mb-4">Poka-Yoke (โปคา-โยเกะ)</h3>
+            <p class="text-gray-300">
+              "การป้องกันความผิดพลาด"
+              โดยออกแบบกระบวนการหรืออุปกรณ์ให้ไม่สามารถเกิดข้อผิดพลาดได้ตั้งแต่แรก
+              หรือทำให้ข้อผิดพลาดนั้นปรากฏชัดเจนและแก้ไขได้ทันที
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Location (REVISED) -->
+      <section
+        id="section-6"
+        class="scroll-section"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1569200670870-9016a5a8a019?q=80&w=2070&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="relative z-10 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">
+            ยุทธศาสตร์ทำเลที่ตั้ง
+          </h2>
+          <div class="card max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-3xl font-semibold mb-4">
+                  ปัจจัยในการเลือกที่ตั้ง
+                </h3>
+                <ul
+                  class="text-left list-disc list-inside text-gray-200 space-y-3"
+                >
+                  <li><b>ใกล้ตลาดผู้บริโภค:</b> ลดค่าขนส่งและภาษี</li>
+                  <li><b>ใกล้แหล่งซัพพลายเออร์:</b> เพื่อสนับสนุนระบบ JIT</li>
+                  <li><b>โครงสร้างพื้นฐานดี:</b> ท่าเรือ, ถนน, ระบบไฟฟ้า</li>
+                  <li><b>มีแรงงานที่มีทักษะ:</b> แหล่งแรงงานคุณภาพ</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-3xl font-semibold mb-4">
+                  ฐานการผลิตสำคัญทั่วโลก
+                </h3>
+                <ul
+                  class="text-left list-disc list-inside text-gray-200 space-y-3"
+                >
+                  <li><b>ญี่ปุ่น (สำนักงานใหญ่):</b> จังหวัดไอจิ</li>
+                  <li><b>สหรัฐอเมริกา</b></li>
+                  <li><b>ประเทศไทย</b></li>
+                  <li><b>จีน</b></li>
+                  <li><b>สหราชอาณาจักร (UK)</b></li>
+                  <li><b>อื่นๆ:</b> อินโดนีเซีย, มาเลเซีย, อินเดีย</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 flex flex-col items-center">
+            <img
+              src="/photo/Toyota_factorie/Toyota_factories.png"
+              alt="Toyota Factories Worldwide"
+              class="w-full max-w-2xl rounded-lg shadow-lg border border-gray-700 object-cover"
+            />
+            <p class="text-gray-200 mt-4 text-sm">
+              แผนที่โรงงานผลิตหลักของโตโยต้าทั่วโลก
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Inventory -->
+      <section id="section-7" class="scroll-section bg-gray-800">
+        <div class="text-center mb-12 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl font-bold mb-2 text-red-500">
+            การจัดการสินค้าคงคลัง
+          </h2>
+          <p class="text-xl text-gray-400">
+            ลดความสูญเปล่าด้วย Just-in-Time และ Lean Manufacturing
+          </p>
+        </div>
+        <div class="card max-w-4xl w-full">
+          <h3 class="text-3xl font-semibold mb-4">เครื่องมือหลัก</h3>
+          <ul class="text-left list-disc list-inside text-gray-300 space-y-3">
+            <li>
+              <b>Just-In-Time (JIT):</b>
+              รับชิ้นส่วนจากซัพพลายเออร์เฉพาะเมื่อถึงเวลาที่ต้องใช้ในสายการผลิต
+              เพื่อลดสต็อกให้เป็นศูนย์
+            </li>
+            <li>
+              <b>Kanban System:</b> ใช้ "บัตร"
+              หรือสัญญาณภาพในการสื่อสารเพื่อดึงชิ้นส่วนมาเติม
+              ควบคุมการไหลของงานอย่างมีประสิทธิภาพ
+            </li>
+            <li>
+              <b>Lean Manufacturing:</b>
+              แนวคิดการผลิตแบบลีนที่มุ่งเน้นการกำจัดความสูญเปล่า (Waste)
+              ทุกรูปแบบในกระบวนการ
+            </li>
+            <li>
+              <b>Supplier Partnership:</b>
+              ทำงานร่วมกับซัพพลายเออร์อย่างใกล้ชิดเพื่อให้การส่งมอบเป็นไปอย่างราบรื่นและเชื่อถือได้
+            </li>
+          </ul>
+        </div>
+        <div class="mt-8 text-center">
+          <img
+            src="/photo/ToyotaInventoryManagement/AGF.avif"
+            alt="Inventory Management"
+            class="w-full max-w-2xl rounded-lg shadow-lg border border-gray-700 object-cover"
+          />
+          <p class="text-gray-200 mt-4 text-sm">
+            การจัดการสินค้าคงคลังแบบ Just-in-Time ของโตโยต้า
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 8: Conclusion -->
+      <section
+        id="section-8"
+        class="scroll-section"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1554844344-99131b32794f?q=80&w=1974&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="absolute inset-0 bg-opacity-70"></div>
+        <div class="relative text-center z-10 max-w-4xl">
+          <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">
+            สรุปกุญแจสู่ความสำเร็จของ TOYOTA
+          </h2>
+          <div class="card">
+            <ul
+              class="text-left list-disc list-inside text-gray-200 space-y-3 text-lg"
+            >
+              <li>
+                <b>Toyota Production System (TPS)</b> คือ DNA
+                ที่เน้นการกำจัดความสูญเปล่าและเพิ่มประสิทธิภาพ
+              </li>
+              <li>
+                <b>JIT และ Jidoka</b> คือ 2
+                เสาหลักที่สร้างระบบการผลิตที่แข็งแกร่งและยืดหยุ่น
+              </li>
+              <li>
+                การให้ความสำคัญกับ<b>คุณภาพ</b>และ<b
+                  >การพัฒนาอย่างต่อเนื่อง (Kaizen)</b
+                >
+                ทำให้โตโยต้าเป็นผู้นำที่ยั่งยืน
+              </li>
+            </ul>
+          </div>
+          <div class="mt-10 flex flex-col items-center">
+            <img
+              src="/ToyotaKey/Toyota_10_M_2.jpg"
+              alt="ทีมผู้จัดทำ"
+              class="w-full max-w-xl rounded-lg shadow-lg border border-gray-700 object-cover"
+            />
+            <p class="text-gray-200 mt-4 text-sm">
+              ภาพการฉลองยอดขาย 10 ล้านคันของโตโยต้า
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 9: Team and Footer -->
+      <section id="section-9" class="scroll-section bg-gray-900">
+        <div class="text-center max-w-7xl w-full px-4">
+          <h2 class="text-4xl md:text-5xl font-bold mb-12 text-red-500">
+            ทีมผู้จัดทำ
+          </h2>
+          <div class="card">
+            <div
+              class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 text-gray-200 items-start"
+            >
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p1.png"
+                  alt="นายวุฒิกร หอมหวล"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-red-500"
+                />
+                <p class="font-semibold text-sm">นาย วุฒิกร หอมหวล</p>
+                <p class="text-xs text-gray-400 mt-1">68110665</p>
+              </div>
+
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p2.png"
+                  alt="นายตรัยสรณ สุทธิสวัสดิ์"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
+                />
+                <p class="font-semibold text-sm">นาย ตรัยสรณ สุทธิสวัสดิ์</p>
+                <p class="text-xs text-gray-400 mt-1">68112838</p>
+              </div>
+
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p3.png"
+                  alt="นายภัทรพงศ์ จุ้ยประเสริฐ"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
+                />
+                <p class="font-semibold text-sm">นาย ภัทรพงศ์ จุ้ยประเสริฐ</p>
+                <p class="text-xs text-gray-400 mt-1">68112015</p>
+              </div>
+
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p4.png"
+                  alt="นายศุภวิชญ กลั่นงิ้ว"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
+                />
+                <p class="font-semibold text-sm">นาย ศุภวิชญ กลั่นงิ้ว</p>
+                <p class="text-xs text-gray-400 mt-1">68112527</p>
+              </div>
+
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p5.png"
+                  alt="นายกอบชนน บริรักษ์"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
+                />
+                <p class="font-semibold text-sm">นาย กอบชนน บริรักษ์</p>
+                <p class="text-xs text-gray-400 mt-1">68111602</p>
+              </div>
+
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p6.png"
+                  alt="นายวรกันต์ ชัยสิทธิ์"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
+                />
+                <p class="font-semibold text-sm">นาย วรกันต์ ชัยสิทธิ์</p>
+                <p class="text-xs text-gray-400 mt-1">68112610</p>
+              </div>
+
+              <div class="text-center flex flex-col items-center">
+                <img
+                  src="/photo/GroupPhoto/p7.png"
+                  alt="นายกฤตภาส ทิพย์สังข์วงษ์"
+                  class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
+                />
+                <p class="font-semibold text-sm whitespace-normal">
+                  กฤตภาส ทิพย์สังข์วงษ์
+                </p>
+                <p class="text-xs text-gray-400 mt-1">68112418</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer
+          class="mt-16 py-10 border-t border-gray-700 bg-[#232B39] rounded-b-lg shadow-inner"
+        >
+          <div class="max-w-3xl mx-auto px-4">
+            <p class="text-lg text-[#FFD166] font-semibold mb-2">
+              อินโฟกราฟิกนี้ถ่ายทอดความสำเร็จของโตโยต้า
+              ผ่านระบบการผลิตและปรัชญาการทำงานระดับโลก
+            </p>
+            <p class="text-sm text-[#B0BEC5] mb-4">
+              ™2025 Toyota Infographic Analysis
+            </p>
+            <div
+              class="flex flex-col md:flex-row md:justify-between gap-4 mb-4"
+            >
+              <div>
+                <h5 class="text-[#06D6A0] font-bold mb-1">ข้อมูลอ้างอิง</h5>
+                <ul
+                  class="text-xs text-[#B0BEC5] leading-relaxed list-disc list-inside"
+                >
+                  <li>Toyota Production System: Beyond Large-Scale Production</li>
+                  <li>The Toyota Way: 14 Management Principles</li>
+                  <li>Just-In-Time for Today and Tomorrow</li>
+                  <li>Lean Thinking: Banish Waste and Create Wealth</li>
+                  <li>Toyota: The Company and Its Future</li>
+                  <li>สมาคมผู้ผลิตรถยนต์แห่งประเทศไทย (TAPMA)</li>
+                  <li>รายงานประจำปีของโตโยต้า</li>
+                </ul>
+              </div>
+            </div>
+            <div class="text-xs text-[#78909C] mb-2">
+              <span class="font-semibold text-[#FFD166]">หมายเหตุ:</span>
+              ข้อมูลในอินโฟกราฟิกนี้เป็นการสรุปและวิเคราะห์จากแหล่งข้อมูลที่เชื่อถือได้
+              และอาจมีการเปลี่ยนแปลงตามสถานการณ์ปัจจุบัน
+            </div>
+            <div
+              class="flex flex-col md:flex-row md:justify-between gap-4 items-center text-xs text-[#B0BEC5]"
+            >
+              <div>
+                <span>ศึกษาข้อมูลเพิ่มเติมได้ที่</span>
+                <a
+                  href="https://www.toyota-global.com/"
+                  class="text-[#FFD166] hover:underline ml-1"
+                  target="_blank"
+                  rel="noopener"
+                  >toyota-global.com</a
+                >
+              </div>
+              <div>
+                <span>ติดต่อทีมงาน:</span>
+                <a
+                  href="mailto:Krittapasthpsang@gmail.com"
+                  class="text-[#FFD166] hover:underline ml-1"
+                  >Krittapasthpsang@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".scroll-section");
+        const navContainer = document.getElementById("nav-container");
+
+        sections.forEach((section, index) => {
+          const dot = document.createElement("div");
+          dot.classList.add("nav-dot");
+          dot.dataset.section = section.id;
+          dot.addEventListener("click", () => {
+            section.scrollIntoView({ behavior: "smooth" });
+          });
+          navContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll(".nav-dot");
+
+        const observerOptions = {
+          root: document.querySelector(".scroll-container"),
+          rootMargin: "0px",
+          threshold: 0.6,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            const navDot = document.querySelector(
+              `.nav-dot[data-section="${id}"]`
+            );
+
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              if (navDot) {
+                dots.forEach((d) => d.classList.remove("active"));
+                navDot.classList.add("active");
+              }
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
