@@ -119,16 +119,105 @@
         width: 150px; /* Fixed width for alignment */
         text-align: center;
       }
-      /* Increased font sizes */
+      /* Responsive adjustments */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block; /* Remove extra space below images */
+      }
+      /* Font sizes */
       p,
       li {
-        font-size: 1.1rem; /* Increased base font size */
+        font-size: clamp(0.9rem, 2vw, 1.1rem); /* Adjusted Responsive font size */
+        word-break: break-word; /* Ensure long words break */
       }
       h4 {
-        font-size: 1.25rem; /* Increased subheading font size */
+        font-size: clamp(1rem, 2.5vw, 1.25rem); /* Adjusted Responsive subheading font size */
+      }
+      .timeline-step {
+        width: clamp(120px, 20vw, 180px); /* Responsive width for timeline step */
       }
       .timeline-step p {
-        font-size: 0.9rem; /* Slightly smaller for timeline description */
+        font-size: clamp(0.75rem, 1.5vw, 0.9rem); /* Adjusted Responsive font size for timeline description */
+      }
+      /* Adjust h1, h2, h3 for smaller screens if needed, though Tailwind handles much of this */
+      h1 {
+        font-size: clamp(2rem, 8vw, 4.5rem); /* Adjusted Smaller on mobile, larger on desktop */
+      }
+      h2 {
+        font-size: clamp(1.8rem, 6vw, 3.5rem); /* Adjusted Smaller on mobile, larger on desktop */
+      }
+      h3 {
+        font-size: clamp(1.3rem, 4vw, 2.5rem); /* Adjusted Smaller on mobile, larger on desktop */
+      }
+
+      /* Media queries for more specific adjustments if clamp() isn't enough */
+      @media (max-width: 768px) {
+        .scroll-section {
+          padding: 1rem; /* Reduce padding on smaller screens */
+        }
+        .card {
+          padding: 1.5rem; /* Reduce card padding */
+        }
+        .nav-dots {
+          right: 1rem; /* Adjust nav dots position */
+          gap: 0.5rem; /* Reduce gap between dots */
+        }
+        .nav-dot {
+          width: 10px;
+          height: 10px;
+        }
+        .timeline-step {
+          width: 100%; /* Full width on small screens for better stacking */
+        }
+        .timeline-step img {
+          height: 180px; /* Adjust image height for smaller screens */
+        }
+        /* Further adjustments for very small screens */
+        .grid.md\:grid-cols-3 {
+          grid-template-columns: 1fr; /* Stack columns on very small screens */
+        }
+        .grid.md\:grid-cols-2 {
+          grid-template-columns: 1fr; /* Stack columns on very small screens */
+        }
+        .grid.lg\:grid-cols-4 {
+          grid-template-columns: 1fr; /* Stack columns on very small screens */
+        }
+        .grid.sm\:grid-cols-4 {
+          grid-template-columns: repeat(2, 1fr); /* 2 columns on small mobile */
+        }
+        .grid.lg\:grid-cols-7 {
+          grid-template-columns: repeat(2, 1fr); /* 2 columns on small mobile */
+        }
+        .text-center.flex.flex-col.items-center {
+          margin-bottom: 1rem; /* Add some space between team members */
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: clamp(1.8rem, 7vw, 3rem); /* Even smaller on very small phones */
+        }
+        h2 {
+          font-size: clamp(1.6rem, 5vw, 2.5rem); /* Even smaller on very small phones */
+        }
+        h3 {
+          font-size: clamp(1.2rem, 3.5vw, 2rem); /* Even smaller on very small phones */
+        }
+        p,
+        li {
+          font-size: clamp(0.8rem, 1.8vw, 1rem); /* Even smaller on very small phones */
+        }
+        .timeline-step p {
+          font-size: clamp(0.7rem, 1.3vw, 0.85rem); /* Even smaller on very small phones */
+        }
+        .card {
+          padding: 1rem; /* Even less padding on very small phones */
+        }
+        .grid.sm\:grid-cols-4,
+        .grid.lg\:grid-cols-7 {
+          grid-template-columns: 1fr; /* Stack team members on very small phones */
+        }
       }
     </style>
   </head>
@@ -812,7 +901,7 @@
                   class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
                   onerror="this.onerror=null;this.src='https://placehold.co/128x128/333/ccc?text=P2';"
                 />
-                <p class="font-semibold text-sm">นาย ตรัยสรณ สุทธิสวัสดิ์</p>
+                <p class="font-semibold text-sm">นาย ศุภวิชญ กลั่นงิ้ว</p>
                 <p class="text-xs text-gray-400 mt-1">68112838</p>
               </div>
 
@@ -823,7 +912,7 @@
                   class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
                   onerror="this.onerror=null;this.src='https://placehold.co/128x128/333/ccc?text=P3';"
                 />
-                <p class="font-semibold text-sm">นาย ภัทรพงศ์ จุ้ยประเสริฐ</p>
+                <p class="font-semibold text-sm">นาย กอบชนน บริรักษ์</p>
                 <p class="text-xs text-gray-400 mt-1">68112015</p>
               </div>
 
@@ -834,7 +923,7 @@
                   class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
                   onerror="this.onerror=null;this.src='https://placehold.co/128x128/333/ccc?text=P4';"
                 />
-                <p class="font-semibold text-sm">นาย ศุภวิชญ กลั่นงิ้ว</p>
+                <p class="font-semibold text-sm">นาย วรกันต์ ชัยสิทธิ์</p>
                 <p class="text-xs text-gray-400 mt-1">68112527</p>
               </div>
 
@@ -845,7 +934,7 @@
                   class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
                   onerror="this.onerror=null;this.src='https://placehold.co/128x128/333/ccc?text=P5';"
                 />
-                <p class="font-semibold text-sm">นาย กอบชนน บริรักษ์</p>
+                <p class="font-semibold text-sm">นายตรัยสรณ สุทธิสวัสดิ์</p>
                 <p class="text-xs text-gray-400 mt-1">68111602</p>
               </div>
 
@@ -856,7 +945,7 @@
                   class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-gray-600"
                   onerror="this.onerror=null;this.src='https://placehold.co/128x128/333/ccc?text=P6';"
                 />
-                <p class="font-semibold text-sm">นาย วรกันต์ ชัยสิทธิ์</p>
+                <p class="font-semibold text-sm">นายภัทรพงศ์ จุ้ยประเสริฐ</p>
                 <p class="text-xs text-gray-400 mt-1">68112610</p>
               </div>
 
