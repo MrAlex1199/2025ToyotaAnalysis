@@ -128,31 +128,80 @@
       /* Font sizes */
       p,
       li {
-        font-size: clamp(0.9rem, 2vw, 1.1rem); /* Adjusted Responsive font size */
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Adjusted Responsive font size */
         word-break: break-word; /* Ensure long words break */
       }
       h4 {
-        font-size: clamp(1rem, 2.5vw, 1.25rem); /* Adjusted Responsive subheading font size */
+        font-size: clamp(1rem, 2vw, 1.25rem); /* Adjusted Responsive subheading font size */
       }
       .timeline-step {
-        width: clamp(120px, 20vw, 180px); /* Responsive width for timeline step */
+        width: clamp(120px, 18vw, 180px); /* Responsive width for timeline step */
       }
       .timeline-step p {
-        font-size: clamp(0.75rem, 1.5vw, 0.9rem); /* Adjusted Responsive font size for timeline description */
+        font-size: clamp(0.7rem, 1.2vw, 0.9rem); /* Adjusted Responsive font size for timeline description */
       }
       /* Adjust h1, h2, h3 for smaller screens if needed, though Tailwind handles much of this */
       h1 {
-        font-size: clamp(2rem, 8vw, 4.5rem); /* Adjusted Smaller on mobile, larger on desktop */
+        font-size: clamp(2rem, 6vw, 4.5rem); /* Smaller on mobile, larger on desktop */
       }
       h2 {
-        font-size: clamp(1.8rem, 6vw, 3.5rem); /* Adjusted Smaller on mobile, larger on desktop */
+        font-size: clamp(1.8rem, 5vw, 3.5rem); /* Smaller on mobile, larger on desktop */
       }
       h3 {
-        font-size: clamp(1.3rem, 4vw, 2.5rem); /* Adjusted Smaller on mobile, larger on desktop */
+        font-size: clamp(1.3rem, 3.5vw, 2.5rem); /* Smaller on mobile, larger on desktop */
       }
 
-      /* Media queries for more specific adjustments if clamp() isn't enough */
-      @media (max-width: 768px) {
+      /* Media query for iPad 11-inch (typical range: 768px to 1024px) */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .scroll-section {
+          padding: 1.5rem; /* Slightly less padding for tablets */
+        }
+        .card {
+          padding: 1.8rem; /* Slightly less card padding for tablets */
+        }
+        h1 {
+          font-size: clamp(2.5rem, 4vw, 3.5rem); /* Adjust h1 for tablets */
+        }
+        h2 {
+          font-size: clamp(2rem, 3.5vw, 2.8rem); /* Adjust h2 for tablets */
+        }
+        h3 {
+          font-size: clamp(1.5rem, 2.8vw, 2rem); /* Adjust h3 for tablets */
+        }
+        p,
+        li {
+          font-size: clamp(0.85rem, 1.3vw, 1rem); /* Adjust body text for tablets */
+        }
+        .timeline-step {
+          width: clamp(130px, 16vw, 160px); /* Adjust timeline step width for tablets */
+        }
+        .timeline-step img {
+          height: 160px; /* Adjust image height for tablets */
+        }
+        .timeline-step p {
+          font-size: clamp(0.7rem, 1vw, 0.8rem); /* Adjust timeline description for tablets */
+        }
+        /* Ensure grid layouts adapt well on tablets */
+        .grid.md\:grid-cols-3 {
+          grid-template-columns: repeat(3, 1fr); /* Keep 3 columns if they fit */
+          gap: 1rem; /* Reduce gap */
+        }
+        .grid.md\:grid-cols-2 {
+          grid-template-columns: repeat(2, 1fr); /* Keep 2 columns if they fit */
+          gap: 1rem; /* Reduce gap */
+        }
+        .grid.lg\:grid-cols-4 {
+          grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets for better spacing */
+          gap: 1.5rem; /* Adjust gap */
+        }
+        .grid.lg\:grid-cols-7 {
+          grid-template-columns: repeat(4, 1fr); /* 4 columns for team members on tablets */
+          gap: 1rem; /* Adjust gap */
+        }
+      }
+
+      /* Media queries for smaller devices (phones) */
+      @media (max-width: 767px) { /* Changed from 768px to 767px to avoid overlap with iPad query */
         .scroll-section {
           padding: 1rem; /* Reduce padding on smaller screens */
         }
